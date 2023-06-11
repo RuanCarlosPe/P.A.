@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+float soma(float a, float b) {
+    return a + b;
+}
+
+float subtracao(float a, float b) {
+    return a - b;
+}
+
+float multiplicacao(float a, float b) {
+    return a * b;
+}
+
+float divisao(float a, float b) {
+    if (b == 0) {
+        printf("Erro: não da pra dividir por 0 não cara!\n");
+        return 0;
+    }
+    return a / b;
+}
+
+int main() {
+    int opcao;
+    float numero1, numero2;
+    int operacaoRealizada = 0; // Variável de controle para verificar se a operação já foi realizada
+
+    while (!operacaoRealizada) {
+        printf("Qual operação vc quer?:\n");
+        printf("1 - Soma\n");
+        printf("2 - Subtração\n");
+        printf("3 - Multiplicação\n");
+        printf("4 - Divisão\n");
+        printf("0 - Sair\n");
+
+        printf("Opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) {
+            break;
+        }
+
+        if (opcao < 1 || opcao > 4) {
+            printf("vai dar não, tenta denovo.\n\n");
+            continue;
+        }
+
+        printf("Escolhe primeiro número: ");
+        scanf("%f", &numero1);
+
+        printf("Escolhe segundo número: ");
+        scanf("%f", &numero2);
+
+        switch (opcao) {
+            case 1:
+                printf("Resultado: %.2f\n\n", soma(numero1, numero2));
+                operacaoRealizada = 1; // Define a variável de controle como 1 para encerrar o loop
+                break;
+            case 2:
+                printf("Resultado: %.2f\n\n", subtracao(numero1, numero2));
+                break;
+            case 3:
+                printf("Resultado: %.2f\n\n", multiplicacao(numero1, numero2));
+                break;
+            case 4:
+                printf("Resultado: %.2f\n\n", divisao(numero1, numero2));
+                break;
+            default:
+                break;
+        }
+    }
+
+    return 0;
+}
